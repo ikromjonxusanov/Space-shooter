@@ -41,6 +41,15 @@ public class Powerup : MonoBehaviour
                     case 2:
                         player.ShieldActive();
                         break;
+                    case 3:
+                        player.AmmoRefill();
+                        break;
+                    case 4:
+                        player.Heal();
+                        break;
+                    case 5:
+                        player.SpreadShotActive();
+                        break;
                     default:
                         Debug.Log("");
                         break;

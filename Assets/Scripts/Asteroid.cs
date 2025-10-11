@@ -39,6 +39,13 @@ public class Asteroid : MonoBehaviour
             Destroy(other.gameObject);
             Destroy(this.gameObject, 0.2f);
             _spawnManager.StartSpawning();
+            
+            // Start the game and initialize ammo
+            Player player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+            if (player != null)
+            {
+                player.StartGame();
+            }
         }
     }
 }

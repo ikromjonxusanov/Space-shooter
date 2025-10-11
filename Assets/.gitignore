@@ -1,0 +1,49 @@
+# Unity generated folders
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Uu]ser[Ss]ettings/
+MemoryCaptures/
+
+# Asset Store tools
+[Aa]ssets/AssetStoreTools*
+
+# IDE and project files
+ExportedObj/
+.consulo/
+.vs/
+.vscode/
+.gradle/
+.idea/
+*.csproj
+*.unityproj
+*.sln
+*.suo
+*.tmp
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+
+# System files
+.DS_Store
+Thumbs.db
+sysinfo.txt
+
+# Platform-specific
+*.apk
+*.aab
+xcuserdata/
+DerivedData/
+**/Pods/
+
+# JetBrains Rider
+*.DotSettings.user

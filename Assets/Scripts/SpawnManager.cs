@@ -13,6 +13,12 @@ public class SpawnManager : MonoBehaviour
     [SerializeField]
     private GameObject[] _powerups;
 
+    [SerializeField]
+    private GameObject[] _rarePowerups;
+
+    [SerializeField]
+    private int _rareSpawnChance = 15; // 15% chance for rare powerup
+
     private bool _stopSpawning = false;
 
     public void StartSpawning()
@@ -44,8 +50,22 @@ public class SpawnManager : MonoBehaviour
         while (!_stopSpawning)
         {
             Vector3 posToSpawn = new Vector3(Random.Range(-8f, 8f), 7f, 0);
-            int randomPowerUp = Random.Range(0, 3);
-            Instantiate(_powerups[randomPowerUp], posToSpawn, Quaternion.identity);
+            
+            // Check if we should spawn a rare powerup
+            int roll = Random.Range(0, 100);
+            if (roll < _rareSpawnChance && _rarePowerups != null && _rarePowerups.Length > 0)
+            {
+                // Spawn rare powerup
+                int randomRarePowerup = Random.Range(0, _rarePowerups.Length);
+                Instantiate(_rarePowerups[randomRarePowerup], posToSpawn, Quaternion.identity);
+            }
+            else
+            {
+                // Spawn normal powerup
+                int randomPowerUp = Random.Range(0, _powerups.Length);
+                Instantiate(_powerups[randomPowerUp], posToSpawn, Quaternion.identity);
+            }
+            
             yield return new WaitForSeconds(Random.Range(3, 8));
         }
     }
