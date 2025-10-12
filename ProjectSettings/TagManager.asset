@@ -7,6 +7,9 @@ TagManager:
   - Laser
   - Enemy
   - SpawnManager
+  - Canvas
+  - Powerup
+  - Homing_Missile
   layers:
   - Default
   - TransparentFX

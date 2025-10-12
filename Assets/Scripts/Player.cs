@@ -50,6 +50,7 @@ public class Player : MonoBehaviour
     private bool _isTripleShotActive = false;
     private bool _isSpreadShotActive = false;
     private bool _isShieldActive = false;
+    private bool _isSlowedDown = false;
 
     [SerializeField]
     private GameObject _shieldVisualizer;
@@ -125,6 +126,11 @@ public class Player : MonoBehaviour
     void Update()
     {
         CalculateMovement();
+        
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            MagnetizePowerups();
+        }
 
         if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Mouse0)) && Time.time > _canFire)
         {
@@ -382,8 +388,36 @@ public class Player : MonoBehaviour
         }
     }
 
-    // method to add 10 to score!
-    // communicate with the ui to update score
+    public void SlowDownDebuff()
+    {
+        if (!_isSlowedDown)
+        {
+            _isSlowedDown = true;
+            _speed /= 2; // Reduce speed by 50%
+            StartCoroutine(SlowDownDebuffRoutine());
+        }
+    }
+
+    IEnumerator SlowDownDebuffRoutine()
+    {
+        yield return new WaitForSeconds(5.0f);
+        _speed *= 2;
+        _isSlowedDown = false;
+    }
+    
+    void MagnetizePowerups()
+    {
+        GameObject[] powerups = GameObject.FindGameObjectsWithTag("Powerup");
+        foreach (GameObject powerupObj in powerups)
+        {
+            Powerup powerup = powerupObj.GetComponent<Powerup>();
+            if (powerup != null)
+            {
+                powerup.MagnetizeToPlayer(transform);
+            }
+        }
+    }
+
     public void AddScore(int points)
     {
         _score += points;

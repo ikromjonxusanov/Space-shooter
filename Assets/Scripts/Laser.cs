@@ -9,6 +9,8 @@ public class Laser : MonoBehaviour
 
     [SerializeField]
     private bool _isEnemyLaser = false;
+    
+    private bool _isReversed = false;
 
     void Start()
     {
@@ -19,7 +21,14 @@ public class Laser : MonoBehaviour
     {
         if (_isEnemyLaser)
         {
-            MoveDown();
+            if (_isReversed)
+            {
+                MoveUp();
+            }
+            else
+            {
+                MoveDown();
+            }
         }
         else
         {
@@ -76,5 +85,10 @@ public class Laser : MonoBehaviour
     public void AssignEnemyLaser()
     {
         _isEnemyLaser = true;
+    }
+    
+    public void ReverseDirection()
+    {
+        _isReversed = true;
     }
 }

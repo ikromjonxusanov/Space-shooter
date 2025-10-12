@@ -29,13 +29,16 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private Color _thrusterCooldownColor = Color.red;
 
-    [Header("Ammo")]
+
     [SerializeField]
     private Text _ammoText;
     [SerializeField]
     private Color _ammoNormalColor = Color.white;
     [SerializeField]
     private Color _ammoEmptyColor = Color.red;
+
+    [SerializeField]
+    private Text _waveText;
 
     private Coroutine _noAmmoRoutine;
 
@@ -141,5 +144,13 @@ public class UIManager : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
         }
         _noAmmoRoutine = null;
+    }
+
+    public void UpdateWave(int waveNumber)
+    {
+        if (_waveText != null)
+        {
+            _waveText.text = "WAVE " + waveNumber;
+        }
     }
 }
