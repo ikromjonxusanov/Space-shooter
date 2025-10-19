@@ -62,9 +62,9 @@ public class Player : MonoBehaviour
     [SerializeField]
     private Color[] _shieldStrengthColors = new Color[]
     {
-        new Color(0.2f, 0.6f, 1f, 0.9f),
-        new Color(1f, 0.85f, 0.2f, 0.85f), 
-        new Color(1f, 0.2f, 0.2f, 0.8f) 
+        new Color(1f, 1f, 1f, 0.9f),
+        new Color(1f, 0.85f, 0.2f, 0.85f),
+        new Color(1f, 0.2f, 0.2f, 0.8f)
     };
 
     [SerializeField]
@@ -435,19 +435,13 @@ public class Player : MonoBehaviour
         {
             return;
         }
-        int hitsTaken = Mathf.Clamp(_shieldMaxStrength - Mathf.Clamp(_shieldStrength, 0, _shieldMaxStrength), 0, int.MaxValue);
-        int idx = Mathf.Clamp(hitsTaken, 0, _shieldStrengthColors.Length - 1);
-        Color c = _shieldStrengthColors[idx];
-        var sr = _shieldVisualizer.GetComponent<SpriteRenderer>();
+        int missingShieldPoints = Mathf.Clamp(_shieldMaxStrength - Mathf.Clamp(_shieldStrength, 0, _shieldMaxStrength), 0, int.MaxValue);
+        int colorIndex = Mathf.Clamp(missingShieldPoints, 0, _shieldStrengthColors.Length - 1);
+        Color shieldColor = _shieldStrengthColors[colorIndex];
+        var sr = _shieldVisualizer != null ? _shieldVisualizer.GetComponent<SpriteRenderer>() : null;
         if (sr != null)
         {
-            sr.color = c;
-            return;
-        }
-        var r = _shieldVisualizer.GetComponent<Renderer>();
-        if (r != null && r.material != null)
-        {
-            r.material.color = c;
+            sr.color = shieldColor;
         }
     }
 

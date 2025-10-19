@@ -73,10 +73,18 @@ public class UIManager : MonoBehaviour
     {
         _scoreText.text = "Score: " + playerScore;
     }
+    
     public void UpdateLives(int currentLives)
     {
-        _livesImage.sprite = _livesSprites[currentLives];
-        if (currentLives == 0)
+        if (_livesImage == null || _livesSprites == null || _livesSprites.Length == 0)
+        {
+            return;
+        }
+
+        int index = Mathf.Clamp(currentLives, 0, _livesSprites.Length - 1);
+        _livesImage.sprite = _livesSprites[index];
+
+        if (currentLives <= 0)
         {
             GameOverSequence();
         }

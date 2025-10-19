@@ -59,6 +59,8 @@ MonoBehaviour:
     type: 3}
   _shieldVisualizer: {fileID: 4812851655462889176}
   _shieldSpawnChance: 30
+  _ramDetectionRange: 3
+  _ramSpeedMultiplier: 2.5
 --- !u!212 &5916662959409420359
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -97,7 +99,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 573062389
   m_SortingLayer: 2
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 3154912113cbb4a498df6f571c74e18c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

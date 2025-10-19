@@ -75,7 +75,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 573062389
   m_SortingLayer: 2
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 3154912113cbb4a498df6f571c74e18c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -269,6 +269,8 @@ MonoBehaviour:
   _fireRate: 5
   _shieldVisualizer: {fileID: 5176397031206829750}
   _shieldSpawnChance: 50
+  _ramDetectionRange: 3.5
+  _ramSpeedMultiplier: 3
 --- !u!1 &5176397031206829750
 GameObject:
   m_ObjectHideFlags: 0
